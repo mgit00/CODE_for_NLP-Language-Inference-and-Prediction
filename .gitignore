@@ -1,3 +1,8 @@
+# mine 
+*.pyc
+output/
+keep_local/* 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
