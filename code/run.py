@@ -1,4 +1,5 @@
 import datasets
+from datasets import load_from_disk
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, \
     AutoModelForQuestionAnswering, Trainer, TrainingArguments, HfArgumentParser
 from helpers import prepare_dataset_nli, compute_accuracy
@@ -65,6 +66,8 @@ def main():
                       help='Limit the number of examples to train on.')
     argp.add_argument('--max_eval_samples', type=int, default=None,
                       help='Limit the number of examples to evaluate on.')
+    argp.add_argument('--load_dataset', action='store_true', default=None)
+
 
     training_args, args = argp.parse_args_into_dataclasses() # default training args from HF, namespace args 
 
@@ -74,16 +77,22 @@ def main():
     # For SNLI, you can prepare a file with each line containing one
         # example as follows:
         # {"premise": "Two women are embracing.", "hypothesis": "The sisters are hugging.", "label": 1}
-    default_datasets = {'nli': ('snli',)} # NLI 
-    dataset_id = default_datasets[args.task]
-    # MNLI has two validation splits (one with matched domains and one with mismatched domains). Most datasets just have one "validation" split
-    eval_split = 'validation'
-    # Load the raw data
-        # *dataset_id unpacks elements by position
-        # **dataset_id_dictionary unpacks elements by name 
-    dataset = datasets.load_dataset(*dataset_id) # call for HF dataset: dataset_id= 'snli'. * to unpack tuple into positional func args 
     
-    
+    if args.load_dataset: 
+      dataset= load_from_disk('./code/datasets/snli_dataset')
+
+    else: 
+      default_datasets = {'nli': ('snli',)} # NLI 
+      dataset_id = default_datasets[args.task]
+      # MNLI has two validation splits (one with matched domains and one with mismatched domains). Most datasets just have one "validation" split
+      eval_split = 'validation'
+      # Load the raw data
+          # *dataset_id unpacks elements by position
+          # **dataset_id_dictionary unpacks elements by name 
+      dataset = datasets.load_dataset('stanfordnlp/snli') #  # call for HF dataset: dataset_id= 'snli'. * to unpack tuple into positional func args 
+      
+      dataset.save_to_disk('./code/datasets/snli_dataset')
+    print('loaded in dataset', dataset_id)
  
 
     # NLI models need to have the output label count specified 
@@ -117,7 +126,7 @@ def main():
         # remove SNLI examples with no label
         dataset = dataset.filter(lambda ex: ex['label'] != -1)
 
-
+    print('dataset filtered')
 
     # choose train or eval based on modes chosen, can do both 
     train_dataset = None # raw exs from dataset['train']
@@ -146,7 +155,7 @@ def main():
 
     # train_dataset, eval_dataset = raw data 
     # train_dataset_featurized, eval_dataset_featurized = tokenized data (AutoTokenizer + .map() for HF Dataset)
-    
+    print('datasets put through autotokenizer')
 
     # ------- 
     # Select the training configuration
@@ -176,22 +185,23 @@ def main():
         args=training_args, # HFArgumentParser defaults 
         train_dataset=train_dataset_featurized, # processed train data 
         eval_dataset=eval_dataset_featurized, 
-        tokenizer=tokenizer, # AutoTokenizer. from_pretrained electra or bert model 
+        processing_class=tokenizer, # old transformers package: tokenizer= AutoTokenizer. from_pretrained electra or bert model 
         compute_metrics=compute_metrics_and_store_predictions # also stores the EvalPrediction object, not letting it fall out of memory  
     )
 
+    print('HF Trainer initialized')
 
     # Train and/or evaluate process 
     if training_args.do_train:
         trainer.train()
         trainer.save_model() # to HFArgumentParser default location 
         # can also do tokenizer.save_pretrained()- so I easily reload everything as a pair later
-
+        print('training done')
 
     if training_args.do_eval:
-        # results = trainer.evaluate(**eval_kwargs) #### 
+        results = trainer.evaluate(**eval_kwargs) #### 
         print('Evaluation results:')
-        # print(results)
+        print(results)
 
         # make directory from namespace args 
         os.makedirs(training_args.output_dir, exist_ok=True)
@@ -201,6 +211,8 @@ def main():
         #     json.dump(results, f)
 
         # evaluation predictions 
+        print('here')
+        print(eval_predictions)
         with open(os.path.join(training_args.output_dir, 'eval_predictions.jsonl'), encoding='utf-8', mode='w') as f:
             for i, example in enumerate(eval_dataset): # raw eval exs example data 
                 example_with_prediction = dict(example) # 
@@ -209,6 +221,7 @@ def main():
                 f.write(json.dumps(example_with_prediction))
                 f.write('\n')
 
+        print('eval done, saved as well')
 
 if __name__ == "__main__":
     main()
