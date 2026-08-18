@@ -5,6 +5,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, \
 from helpers import prepare_dataset_nli, compute_accuracy
 import os
 import json
+import torch 
 
 NUM_PREPROCESSING_WORKERS = 2
 
@@ -128,30 +129,44 @@ def main():
 
     print('dataset filtered')
 
-    # choose train or eval based on modes chosen, can do both 
-    train_dataset = None # raw exs from dataset['train']
-    eval_dataset = None
-    train_dataset_featurized = None
-    eval_dataset_featurized = None
-    if training_args.do_train:
-        train_dataset = dataset['train']
-        if args.max_train_samples: # if specified, limit the number of examples to include 
-            train_dataset = train_dataset.select(range(args.max_train_samples))
-        train_dataset_featurized = train_dataset.map( # useable with HF Dataset objct 
-            prepare_train_dataset, # function defined above 
-            batched=True,
-            num_proc=NUM_PREPROCESSING_WORKERS,
-            remove_columns=train_dataset.column_names # drops unneeded raw data columns immediately after processing text
-        )
-    if training_args.do_eval:
-        eval_dataset = dataset[eval_split]
-        if args.max_eval_samples:
-            eval_dataset = eval_dataset.select(range(args.max_eval_samples))
-        eval_dataset_featurized = eval_dataset.map(prepare_eval_dataset,
-            batched=True,
-            num_proc=NUM_PREPROCESSING_WORKERS,
-            remove_columns=eval_dataset.column_names
-        )
+    if args.load_dataset: 
+      train_dataset = dataset['train']
+      eval_dataset = dataset[eval_split]
+      # dataset= dataset # load_from_disk('./code/datasets/snli_dataset')
+      train_dataset_featurized = load_from_disk('./code/datasets/snli_train_featurized')
+      eval_dataset_featurized = load_from_disk('./code/datasets/snli_eval_featurized')
+
+    else: 
+      # choose train or eval based on modes chosen, can do both 
+      train_dataset = None # raw exs from dataset['train']
+      eval_dataset = None
+      train_dataset_featurized = None
+      eval_dataset_featurized = None
+      # if training_args.do_train:
+      if True: 
+          train_dataset = dataset['train']
+          if args.max_train_samples: # if specified, limit the number of examples to include 
+              train_dataset = train_dataset.select(range(args.max_train_samples))
+          train_dataset_featurized = train_dataset.map( # useable with HF Dataset objct 
+              prepare_train_dataset, # function defined above 
+              batched=True,
+              num_proc=NUM_PREPROCESSING_WORKERS,
+              remove_columns=train_dataset.column_names # drops unneeded raw data columns immediately after processing text
+          )
+      # if training_args.do_eval:
+      if True: 
+          eval_dataset = dataset[eval_split]
+          if args.max_eval_samples:
+              eval_dataset = eval_dataset.select(range(args.max_eval_samples))
+          eval_dataset_featurized = eval_dataset.map(prepare_eval_dataset,
+              batched=True,
+              num_proc=NUM_PREPROCESSING_WORKERS,
+              remove_columns=eval_dataset.column_names
+          )
+
+      train_dataset_featurized.save_to_disk('./code/datasets/snli_train_featurized')
+      eval_dataset_featurized.save_to_disk('./code/datasets/snli_eval_featurized')
+
 
     # train_dataset, eval_dataset = raw data 
     # train_dataset_featurized, eval_dataset_featurized = tokenized data (AutoTokenizer + .map() for HF Dataset)
@@ -165,7 +180,8 @@ def main():
             # Periodically saves the model weights and training state so you can resume training if it crashes
             # Automatically detects and moves model and data to CPU or GPU
     trainer_class = Trainer # HF Trainer
-
+    print('torch', torch.cuda.is_available())  # Must return True
+    print(torch.cuda.get_device_name(0))
 
     eval_kwargs = {}
    
