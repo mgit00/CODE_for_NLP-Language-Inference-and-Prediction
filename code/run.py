@@ -79,21 +79,22 @@ def main():
         # example as follows:
         # {"premise": "Two women are embracing.", "hypothesis": "The sisters are hugging.", "label": 1}
     
+    default_datasets = {'nli': ('snli',)} # NLI 
+    dataset_id = default_datasets[args.task]
+    # MNLI has two validation splits (one with matched domains and one with mismatched domains). Most datasets just have one "validation" split
+    eval_split = 'validation'
+
     if args.load_dataset: 
       dataset= load_from_disk('./code/datasets/snli_dataset')
 
     else: 
-      default_datasets = {'nli': ('snli',)} # NLI 
-      dataset_id = default_datasets[args.task]
-      # MNLI has two validation splits (one with matched domains and one with mismatched domains). Most datasets just have one "validation" split
-      eval_split = 'validation'
       # Load the raw data
           # *dataset_id unpacks elements by position
           # **dataset_id_dictionary unpacks elements by name 
       dataset = datasets.load_dataset('stanfordnlp/snli') #  # call for HF dataset: dataset_id= 'snli'. * to unpack tuple into positional func args 
       
       dataset.save_to_disk('./code/datasets/snli_dataset')
-    print('loaded in dataset', dataset_id)
+      print('loaded in dataset', dataset_id)
  
 
     # NLI models need to have the output label count specified 
