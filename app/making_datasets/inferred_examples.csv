@@ -1,0 +1,105 @@
+rule,sentence1,sentence2,gold_label
+*;it cleft: ARG1;it cleft: ARG1,It is a group of swimmers who is putting together their hands.,It is a swimmer who is swimming laps.,contradiction
+*;it cleft: ARG1;it cleft: ARG1,It is two policemen in yellow and black uniforms who are riding bikes.,It is the policemen who are wearing vests.,neutral
+*;it cleft: ARG1;it cleft: ARG1,"Upside-down, it is a blond woman which tips a blond young girl.",It is a lady who is holding a girl upside-down.,entailment
+*;it cleft: ARG1;it cleft: ARG1,It is a woman in a t-shirt and shorts who walks with a racket on a tennis field.,It is the woman which is in a bikini.,contradiction
+*;it cleft: ARG1;it cleft: ARG1,It is a person sitting on train tracks who is selling food.,It is no one which is sitting.,contradiction
+*;it cleft: ARG1;it cleft: ARG1,It is a man at his desk that is reading from his computer monitor.,It is a person who is reading.,entailment
+*;it cleft: ARG1;it cleft: ARG1,It is a girl in a red shirt and a guy in a black shirt that are sitting on the talking fronted porch.,It is a man who is dancing with his wife.,contradiction
+*;it cleft: ARG1;it cleft: ARG1,It is four people who walk on a bridge over a body of water.,It is four people who are camping.,neutral
+*;it cleft: ARG1;it cleft: ARG1,It is old a man in khakis more who sits in a donkey drawn open small carriage.,It is an older man in khakis that is taking a ride in a carriage.,entailment
+*;it cleft: ARG1;it cleft: ARG1,It is two women who walk down a street.,It is the two friends who are driving to a party.,contradiction
+*;it cleft: ARG1;it cleft: ARG1,It is a black dog who walks along an ocean front.,It is not the dog who is afraid of the water.,neutral
+*;it cleft: ARG1;it cleft: ARG1,It is the boy that is doing a stunt through the air on a bicycle.,It is a woman who is riding a bike.,contradiction
+*;it cleft: ARG1;it cleft: ARG1,It is three males who are cooking something over a fire pit.,It is three males who are sitting on the porch.,contradiction
+*;passive: ARG2;passive: ARG2,A book near a woman relaxing on a concrete slab is read by a man with a backpack.,A book is being read by a man.,entailment
+*;passive: ARG2;passive: ARG2,Snap a picture is topped by the pair in blue while another woman walks by.,Green tops are being worn by them.,contradiction
+*;passive: ARG2;passive: ARG2,Wine for a woman in a yellow shirt is poured by a man with glasses.,A Broadway show is being attended by the people.,contradiction
+*;passive: ARG2;passive: ARG2,Calligraphy is being written by a man at a street stall while another man watches.,A poem is being written by the man.,contradiction
+*;passive: ARG2;passive: ARG2,A dish is being prepared by a chef in a large kitchen.,Their favorite dish is being prepared by a chef in a large kitchen.,neutral
+*;passive: ARG2;passive: ARG2,A pizza is being cooked by a guy in a white apron in a stone oven.,Pizza is being cooked by a guy.,entailment
+*;passive: ARG2;passive: ARG2,Shadows are being shown by a man to three kids sitting at a table.,Funny shadows are being made by the man for the kids.,neutral
+*;passive: ARG2;passive: ARG2,A black child is being held by a white man wearing a hat.,A child is being held by a man.,entailment
+*;passive: ARG2;passive: ARG2,A fish in both hands is held by a man.,A fish is being held by a man with both hands.,entailment
+*;passive: ARG2;passive: ARG2,A hammer is being held by a man in his left hand over a chisel held in his right hand.,A hammer and chisel is used by the guy.,entailment
+*;passive: ARG2;passive: ARG2,Mountains are painted by a woman while observing the mountains.,Her skill is being practiced by a woman.,neutral
+*;passive: ARG2;passive: ARG2,Fruit is being carried by four African boys.,Some fruit is being transported by some African guys.,entailment
+*;passive: ARG2;passive: ARG2,The street is being drawn on by a man while another man videotapes it.,Art is being done by a man on the road.,neutral
+entailment;past simple;future simple,Atop a structure wearing sunglasses near a dark haired woman sat a dark haired man.,The dark haired man will be on high ground.,neutral
+entailment;past simple;future simple,An Indian lady wearing orange was at the market in front of a bunch of fabric on a table talking to the lady sitting down.,A lady will be at the market.,neutral
+entailment;past simple;future simple,The brown dog pulled a skier across snow covered ground.,The dog will pull somebody.,neutral
+entailment;past simple;future simple,Three men waded into the ocean shore.,The men will be in the water.,neutral
+entailment;past simple;future simple,A young boy played a video game in a McDonald's restaurant.,A boy will play a video game at McDonald's.,neutral
+entailment;past simple;future simple,A boy in a blue shirt smiled as he sits with his red stuffed animal.,A boy will sit with a stuffed animal.,neutral
+entailment;past simple;future simple,People walked across fields of ice holding poles.,People will walk across fields.,neutral
+entailment;past simple;future simple,The Teddy bear had white pads on the bottom of its feet.,The stuffed animal will be a Teddy bear.,neutral
+entailment;past simple;future simple,A man shot a rifle while a dog looks on.,A man will be pictured with his dog.,neutral
+entailment;past simple;future simple,A teen boy with a black shirt and blue jeans performed an BMX trick.,A person will be on a bike.,neutral
+entailment;past simple;future simple,A band played a concert for fans.,People will play instruments for a crowd.,neutral
+entailment;past simple;future simple,A diagram of a hand was displayed on a wall behind which a woman studies.,A picture of a hand will be on the wall.,neutral
+entailment;past simple;future simple,Tourists boarded a Vietnamese skiff for a river tour.,Tourists will board a tour.,neutral
+entailment;may;original,"An urban street corner may feature a white van and a bicycle rider to the left who, has a variety of objects on display in front of it of a brown building.",A white automobile is on a street corner.,neutral
+entailment;may;original,A baby in a pink sweater may look up at a leafy branch.,the baby is wearing a sweater,neutral
+entailment;may;original,A catcher with a red shirt may be standing in the dirt with his glove held out by.,The catcher stands with his glove out.,neutral
+entailment;may;original,A man may be inside a bubble floating over a body of water.,A man is outdoors.,neutral
+entailment;may;original,The man may be filling his car with gasoline.,The car is being filled with gasoline.,neutral
+entailment;may;original,Five men may stand in a line in front of a red curtain.,Five men lined up outside a red curtain,neutral
+entailment;may;original,A man may walk past burning piles in front of a crowd with cameras.,The man is being captured on video or film.,neutral
+entailment;may;original,A girl may be giving a treat to a dog.,A girl gives the dog a treat.,neutral
+entailment;may;original,Two people may be sitting at nighttime on the bus.,Two people are riding the bus.,neutral
+entailment;may;original,A woman with long hair and a black shirt may wash the dishes.,The lady is using soap and water.,neutral
+entailment;may;original,A bald man may hold up his daughter on his shoulders.,A bald man holds a girl up on his shoulders.,neutral
+entailment;may;original,A blue SUV may drive in a stream surrounded by woodlands.,A vehicle is in a stream in the woods.,neutral
+entailment;may;original,A surfer may ride the wave.,A surfer rides the wave.,neutral
+entailment;may;may,A group of tourists may be walking down a paved trail.,The people may walk down the trail.,neutral
+entailment;may;may,A person may stand next to the island Easter statues.,A person may be at an island.,neutral
+entailment;may;may,A man may ride a horse in a rodeo.,A man may be at a rodeo.,neutral
+entailment;may;may,The man may sit on the stool watching the artisan at work.,A man may be watching somebody make something.,neutral
+entailment;may;may,A woman sitting in a chair attached to a wooden long arm with a crowd may gather around her.,A woman may be sitting in a chair surrounded by people.,neutral
+entailment;may;may,Two men may be having a conversation in a cathedral or mosque.,Two men may be having a conversation.,neutral
+entailment;may;may,Sketching an image with chalk a woman may be sitting on the sidewalk.,An artist may be working on their outdoor next artwork.,neutral
+entailment;may;may,Four men may carry a Jesus mounted on a cross.,Four men may carry a cross.,neutral
+entailment;may;may,A cyclist may drink water.,A person may drink water.,neutral
+entailment;may;may,A woman dressed in a red coat may be walking down a rainy street.,A woman may be outside.,neutral
+entailment;may;may,A woman may be blowing the seeds from a dandelion.,A woman may be blowing the seeds.,neutral
+entailment;may;may,A lot of people may be marching through the street.,A large group may be moving together on the street.,neutral
+entailment;may;may,Two adults may be working on a piece of wood.,Two adults may be working.,neutral
+contradiction;future simple;past simple,"Two women will be on break at work laughing at, talking, and enjoying a soda.",Three guys were on break.,neutral
+contradiction;future simple;past simple,A man smoking a cigarette will look down at a person with a basket of green vegetation on their head.,The workers were on the automobile factory line.,neutral
+contradiction;future simple;past simple,Trees will obscure a building to the right.,There were no structures on the horizon.,neutral
+contradiction;future simple;past simple,A group of dark haired men in red t-shirt plays will drum.,A group of dark haired women in red t-shirts played guitar.,neutral
+contradiction;future simple;past simple,A woman will prepare to throw a stick to a leaping dog.,A man was about to throw a ball to a dog.,neutral
+contradiction;future simple;past simple,A choir will perform for a group of worshipers at a church.,There were no people in the church choir.,neutral
+contradiction;future simple;past simple,A woman wearing a life jacket will photograph a whale at the edge of her boat.,A woman took pictures of colorful small fish.,neutral
+contradiction;future simple;past simple,A person will ride a dirt bike.,The dirt biker was a zombie.,neutral
+contradiction;future simple;past simple,A dog will jump in the snow trying to catch a snowball.,A dog humped a toy in the snow.,neutral
+contradiction;future simple;past simple,A man sitting in the grass will hold his child in his lap.,A woman held a ball.,neutral
+contradiction;future simple;past simple,A little girl will jump into a pool while a man helps to catch her.,A child was sick in bed.,neutral
+contradiction;future simple;past simple,Snow skiers will gather at the bottom of a snowy hill.,The skiers met for drinks.,neutral
+contradiction;future simple;past simple,A man dressed in mediæval clothing will sit on a mediæval type cart.,A woman dressed in mediæval clothing sat on a mediæval type cart.,neutral
+contradiction;may;original,A woman with pink bows in her hair may play an instrument.,Nobody has an instrument,neutral
+contradiction;may;original,Eight young dancers in blue jeans and white t-shirts may dance in a way synchronized with.,Eight young dancers in khakis and black t-shirts dance in an unsynchronized way.,neutral
+contradiction;may;original,A girl while standing by the ocean may leap into the air.,A girl is swimming in the lake.,neutral
+contradiction;may;original,A man in a jacket and mask may stand behind a series of wires next to a flag.,The man is naked.,neutral
+contradiction;may;original,A young girl may be shovelling snow in front of a house.,A girl shovels dirt for a garden.,neutral
+contradiction;may;original,A group of people in the grass on the right while one person may sit in a tree.,Some people are,neutral
+contradiction;may;original,A man in a green shirt may trim the grass in a riding mower.,A man trims his beard.,neutral
+contradiction;may;original,A man on a bicycle may ride past a blue bright door.,The man is driving a car.,neutral
+contradiction;may;original,Smiling at the camera young adults may work together in a lush green garden.,"People are gathered by a fountain, looking away from the camera.",neutral
+contradiction;may;original,Some people may be dressed up by for a costume party.,The people are all naked.,neutral
+contradiction;may;original,A young child may play a musical instrument in front of another boy.,The old man is driving the kid and his musical instrument,neutral
+contradiction;may;original,A woman wearing a red tank top may be cutting a hamburger in half.,A woman puts lotion on the burger before eating it.,neutral
+contradiction;may;original,An elderly man may be in a market.,An elderly man is watching tv,neutral
+contradiction;may;may,Two police officers may question a seated man in front of a subway train.,The man may be on a boat.,neutral
+contradiction;may;may,There may be three women dressed like angels.,Three women definitely may like teachers.,neutral
+contradiction;may;may,A blond dressed in a white tennis outfit may be licking her lip while holding a tennis racket.,A blond dressed in a tennis racket may have her arms full of grocery bags.,neutral
+contradiction;may;may,Three people may stand next to a black chair and a guitar on a stark black stage.,The circus may be on stage.,neutral
+contradiction;may;may,"As a gray, and white cat sleeps on the floor nearby, a person, covered with a pink blanket, partially, may sleep.",A student may deliver pizza.,neutral
+contradiction;may;may,A man in a brown suit may pass by a bus stop in the city.,The man may be driving the bus.,neutral
+contradiction;may;may,A woman while standing behind a stack of water bottles may be talking on her phone.,A woman may not be talking on her phone.,neutral
+contradiction;may;may,Two men may be jumping in the air whilst crossing a wooden bridge.,The men may be sitting.,neutral
+contradiction;may;may,A lady in an orange shirt may sit alone on a sidewalk.,A lady wearing purple may cross the finish line.,neutral
+contradiction;may;may,Many people may be crowding around a lady in a red shirt who is laying down hurt next to two bikes.,The crowd may be watching the woman play guitar.,neutral
+contradiction;may;may,A baseball player in a uniform with a dark top and light pants may be hitting the ball with his bat.,Two young boys may be playing chess in a library.,neutral
+contradiction;may;may,A man may be catching a football.,The man may be catching a baseball.,neutral
+contradiction;may;may,Asian man may be praying on his knees.,The woman may watch tv.,neutral
